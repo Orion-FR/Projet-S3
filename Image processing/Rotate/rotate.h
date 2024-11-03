@@ -1,5 +1,5 @@
-#ifndef IMAGE_ROTATION_H
-#define IMAGE_ROTATION_H
+#ifndef ROTATE_H
+#define ROTATE_H
 
 #include <stddef.h>
 #include <stb_image.h>
@@ -19,6 +19,6 @@ void freeImage(Image* img);
 
 int saveImage(const char* filePath, Image* img, int format);
 
-Image* rotateImage(const Image* img, float degrees, RotationDirection direction);
+Image* rotateImage(const Image* img, float degrees);
 
 #endif

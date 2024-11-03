@@ -1,4 +1,4 @@
-#include <load.h>
+#include "load.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stb_image.h>
@@ -20,3 +20,10 @@ Image* loadImage(const char* filePath)
         }
     return img;
     }
+
+
+
+int main() 
+{
+    return 0;
+}

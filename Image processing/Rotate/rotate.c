@@ -1,11 +1,12 @@
 #define STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_WRITE_IMPLEMENTATION
-#include "image_rotation.h"
+#include "rotate.h"
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
 
-Image* loadImage(const char* filePath) {
+Image* loadImage(const char* filePath) 
+{
     Image* img = (Image*)malloc(sizeof(Image));
     if (!img) {
         fprintf(stderr, "Erreur: Echec d'allocation de mémoire pour l'image.\n");
@@ -33,30 +34,29 @@ void freeImage(Image* img) {
 
 int saveImage(const char* filePath, Image* img, int format) {
     int success = 0;
-    if (format == STBI_png) 
+    if (format == stbi__png) 
     {
         success = stbi_write_png(filePath, img->width, img->height, img->channels, img->data, img->width * img->channels);
     } 
-    else if (format == STBI_jpg) 
+    else if (format == stbi__jpg)
     {
         success = stbi_write_jpg(filePath, img->width, img->height, img->channels, img->data, 100);
     } 
-    else if (format == STBI_bmp) 
+    else if (format == stbi__bmp) 
     {
         success = stbi_write_bmp(filePath, img->width, img->height, img->channels, img->data);
     }
     return success;
 }
 
-Image* rotateImage(const Image* img, float degrees, RotationDirection direction) {
-    if (!img || !img->data) {
+Image* rotateImage(const Image* img, float degrees) 
+{
+    if (!img || !img->data) 
+    {
         return NULL;
     }
 
     float radians = degrees * M_PI / 180.0;
-    if (direction == RIGHT) {
-        radians = -radians;
-    }
 
     int newWidth = (int)(abs(img->width * cos(radians)) + abs(img->height * sin(radians)));
     int newHeight = (int)(abs(img->width * sin(radians)) + abs(img->height * cos(radians)));
@@ -101,4 +101,9 @@ Image* rotateImage(const Image* img, float degrees, RotationDirection direction)
         }
     }
     return rotatedImg;
+}
+
+int main() 
+{
+    return 0;
 }

@@ -12,3 +12,8 @@ void greyscale_image(Image* image)
         }
     }
 }
+
+int main() 
+{
+    return 0;
+}
