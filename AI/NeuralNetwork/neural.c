@@ -1,4 +1,4 @@
-include <stdlib.h>
+#include <stdlib.h>
 #include "neural.h"
 
 Neuron *create_neuron(int num_inputs) {
